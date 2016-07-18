@@ -531,29 +531,53 @@ body.fishrappr {
   }
 }
 
+/* Footer Style*/
+// html {
+//   position: relative;
+//   min-height: 100%;
+// }
+
+// body {
+//   margin-bottom: 50px;  /* Margin bottom by footer height */
+// }
+
 footer { 
   background-color: #00274C;
-  color: white;
+  // bottom: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   height: 50px;
-  line-height: 3em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 20px;
+  // position: absolute;
+  width: 100%;
 
   ul, span.copyright {
-    display: block;
     list-style-type: none;
     margin: 0;
+    margin-left: 2em;
+    overflow: hidden;
     padding: 0;
-    vertical-align: middle;
+  }
+
+  li {
+    float: left;
   }
 
   li a, span.copyright {
-    color: lightgray;
+    color: white;
     display: block;
-    padding: .5em;
+    margin: 4px;
+    margin-top: 6px;
+    padding: 7px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  li.footer-link-help a {
+    border: 1px solid white;
+  }
+
+  li.footer-link-home a {
+    border: 1px solid #00274C;
   }
 
   li a, li a:visited {
@@ -567,10 +591,22 @@ footer {
   }
 
   span.copyright {
+    border: 0;
     display: block;
     float: right;
+    margin: 0;
+    padding: 0;
   }
 }
+
+/* TOP NAV BAR */
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+  font-size: 18pt;
+  font-weight: normal;
+}
+
 
 /* STATIC PAGES */
 
