@@ -619,12 +619,14 @@ body.blacklight-catalog-home {
 
   .head a, .donors a {
     color: white;
-    display: block;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top: 2em;
-    padding: .5em;
-    width: 10em;
+    font-size: 1.3em;
+    text-decoration: underline;
+    // display: block;
+    // margin-left:auto;
+    // margin-right:auto;
+    // margin-top: 2em;
+    // padding: .5em;
+    // width: 10em;
   }
 }
 
@@ -651,7 +653,7 @@ body.blacklight-catalog-home {
   }
 
   a {
-    border: solid 2px white;
+    // border: solid 2px white;
     color: white;
   }  
 
@@ -674,8 +676,8 @@ body.blacklight-catalog-home {
   }
 
   a {
-    border: solid 2px darkgray;
     color: #9d9d9d;
+    font-size: 1.3em;
   }  
 }
 
@@ -686,8 +688,29 @@ body.blacklight-catalog-home {
 
   h3 {
     font-size: 2.5em;
-    padding-top: 3em;
+    padding-top: 1em;
   }
+}
+
+.featured #documents {
+    z-index: 100;
+}
+
+.home .featured .caption {
+
+  h3 { 
+    font-size: 1em;
+    padding-top: 0;
+  }
+
+  a {
+
+    font-size: 14px;
+  }
+}
+
+.home #sortAndPerPage {
+  display: none;
 }
 
 /* Footer Style*/

@@ -95,10 +95,6 @@ module Fishrappr::Catalog
 
     params['view'] = 'grid'
 
-    puts "PARAMS ARE: "
-    puts params
-
-
     # build fq Array
     fq_arr = []
 
@@ -134,6 +130,7 @@ module Fishrappr::Catalog
     # Need to get multiple documents here -- like index above???
     @response = repository.search(params)
     @document_list = @response.documents
+
   end
 
   # UTILITY
@@ -232,6 +229,38 @@ module Fishrappr::Catalog
   def home
     query = search_builder.merge(rows: 0)
     @response = repository.search(query)
+
+    params['view'] = 'grid'
+
+    # build fq Array
+    fq_arr = []
+
+    # add sequence to fq hash
+    fq_arr << "sequence:1"
+
+    # get month number and add to fq_arr
+    time = Time.new
+    m = time.month
+    fq_arr << "date_issued_mm_ti:#{m}";
+
+    # ditto for day in month
+    d = time.day
+    fq_arr << "date_issued_dd_ti:#{d}";
+
+    params = {
+      fl: blacklight_config.default_solr_params[:fl] + ",date_issued_dt,page_abstract",
+      fq: fq_arr,
+      sort: "date_issued_dt asc, sequence asc",
+      rows: 3
+    }
+
+    puts "PARAMS IN HOME ARE:"
+    puts params
+
+    # Need to get multiple documents here -- like index above???
+    @response2 = repository.search(params);
+    @document_list = @response2.documents;
+
     render :layout => 'home'
   end
 
@@ -323,7 +352,7 @@ module Fishrappr::Catalog
         rows: 500
       }
 
-      solr_response = repository.search(params)
+      solr_response = repository.search(params);
       data = {}
       data[:seq] = [1,2,3]
       data[:id] = "#{ht_namespace}.#{ht_barcode}"

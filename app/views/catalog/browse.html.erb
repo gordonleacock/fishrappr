@@ -9,13 +9,13 @@
   <% month_browse_options = get_month_options; month_browse_options.unshift(['Any Month', 'Any Month']) %>
   <% date_browse_options = get_date_options; date_browse_options.unshift(['Any Day', 'Any Day']) %>
 
+
     <%= form_tag(browse_path, role: 'browse', method: :get, class: "form-inline browse-form") do %>
       <div class="browse-select-box">
         <div class="form-group">
-          <label class="sr-only">Browse issues by</label>
-          <%= select_tag(name="date_issued_yyyy10_ti", options_for_select(decade_browse_options), class: 'changeable form-control') %>          
-          <%#= date_select("browse_date", "published", start_year: 1890, prompt: { day: 'Any Date', month: 'Any Month', year: 'Any Year' }) %>
 
+          <label class="sr-only">Browse by</label>
+          <%= select_tag(name="date_issued_yyyy10_ti", options_for_select(decade_browse_options), class: 'changeable form-control') %>
           <%= select_tag(name="date_issued_yyyy_ti", options_for_select(year_browse_options), class: 'changeable form-control') %>
           <%= select_tag(name="date_issued_mm_ti", options_for_select(month_browse_options), class: 'changeable form-control') %>
           <%= select_tag(name="date_issued_dd_ti", options_for_select(date_browse_options), class: 'changeable form-control') %>
@@ -32,17 +32,18 @@
 <div class="col-sm-12">
   <div class="issues-display">
     <% months = ["Any Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    params['date_issued_mm_ti'] == "Any Month" ? this_month = "Any Month" : this_month = months[ params['date_issued_mm_ti'].to_i ]
-    if (params['date_issued_yyyy_ti'] == "Any Year" && params['date_issued_yyyy10_ti'] == "Any Decade")
-        this_decade = " in Any Decade" 
-    end
-    if (params['date_issued_yyyy_ti'] == "Any Year" && params['date_issued_yyyy10_ti'] != "Any Decade")
-        this_decade = " in the " << params['date_issued_yyyy10_ti'] << "s" 
-    end
-    if (params['date_issued_yyyy_ti'] != "Any Year")
-        this_decade = "" 
-    end
-        %>
+
+      params['date_issued_mm_ti'] == "Any Month" ? this_month = "Any Month" : this_month = months[ params['date_issued_mm_ti'].to_i ]
+      if (params['date_issued_yyyy_ti'] == "Any Year" && params['date_issued_yyyy10_ti'] == "Any Decade")
+          this_decade = " in Any Decade" 
+      end
+      if (params['date_issued_yyyy_ti'] == "Any Year" && params['date_issued_yyyy10_ti'] != "Any Decade")
+          this_decade = " in the " << params['date_issued_yyyy10_ti'] << "s" 
+      end
+      if (params['date_issued_yyyy_ti'] != "Any Year")
+          this_decade = "" 
+      end
+    %>
     <h3>Browsing: <%= params['date_issued_dd_ti'] %> of <%= this_month %>, <%= params['date_issued_yyyy_ti'] %><%= this_decade %></h3>  
 
     <%= render 'search_results' %>

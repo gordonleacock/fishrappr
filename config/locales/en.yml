@@ -42,14 +42,15 @@ en:
       home:
         title: Home Page
         head:
-          h2: Michigan Daily Archives
+          h2: The Michigan Daily Archives
           h3: 1890 - 2016
           p1: Student News at the University of Michigan
           p2: 130,000 papers covering over 120 years of campus life
-          link: Read More
+          link: Read about the Archives
         donors:
           h3: Thank You to Our Alumni Donors!
           p: We couldn't have created the Michigan Daily archive without the generous financial support of our donors.
+          link: Read about our Donors
       how-to-search:
         h2: How to Search
 
